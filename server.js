@@ -14,16 +14,27 @@ const format = morganjson({
   'response-time': ':response-time ms'
 });
 
+
+app.use("/static", express.static(__dirname + '/node_modules'));
+app.use("/static", express.static(__dirname + '/public'));
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(morgan(format));
 
 let router = express.Router();
-
+//Funciones get
 router.get('/', (req, res) => {
   res.json({ name: 'yape-api',version: "0.0.1"});
 });
+//Funcion para levantar el servidor
+app.get('/',function(req,res){
+    res.sendFile(__dirname+'/index.html');
+    console.log("Levantando el servidor")
+})
+
 
 app.use('/api',apiUsers(router,db));
 

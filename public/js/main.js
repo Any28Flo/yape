@@ -1,7 +1,15 @@
-  $('.carousel.carousel-slider').carousel({fullWidth: true});
 
+var funcionCarrusel = function (){
+    $('.carousel.carousel-slider').carousel({fullWidth: true, });
+    console.log("En funcion la del carrusel")
+}
+  
 var saluda = function(){
     console.log("El js esta funcionando");
 }
 
-saluda();
+$(document).ready(function(){
+      funcionCarrusel();
+      saluda();
+});
+        
